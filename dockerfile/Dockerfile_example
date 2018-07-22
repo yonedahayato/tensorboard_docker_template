@@ -1,0 +1,9 @@
+FROM python:3.6
+
+RUN pip install tensorflow
+
+WORKDIR /code
+
+COPY . /code
+
+CMD python sample_code.py

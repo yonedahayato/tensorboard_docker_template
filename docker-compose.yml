@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  tensorflow:
+    image: tb_sample
+    environment:
+      WORKING_DIR: working_dir
+      LOG_DIR: log_dir
+    volumes:
+      - ${WORKING_DIR}:/code
+      - ${LOG_DIR}:/code/tensorboard_log
+    working_dir: /code
+
+  tensorboard:
+    image: tensorboard
+    environment:
+      LOG_DIR: log_dir
+    volumes:
+      - ${LOG_DIR}:/logs
+    working_dir: /logs
+    ports:
+      - "6006:6006"
